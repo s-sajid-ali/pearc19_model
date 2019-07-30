@@ -1,2 +1,2 @@
-# pearc19_model
-Student Modeling Challenge, Population Dynamics.
+# pearc19-model
+Student Modeling Challenge
