@@ -83,7 +83,6 @@ def pop_dyn_cap(brM = 0.2,    #moose birth rate
     # Model parameters
     time_step = 0.0833    # simulation time step in years (a month)
     start_time = 0        # in years
-    end_time = 50         # in years
     
     # Derived constants
     N = int((end_time - start_time) / time_step)    # number of simulation steps
