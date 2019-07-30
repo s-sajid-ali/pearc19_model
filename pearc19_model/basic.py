@@ -22,7 +22,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-all = ['pop_dyn']
+all = ['pop_dyn', 'pop_dyn_cap']
 
 
 '''
@@ -35,13 +35,12 @@ def pop_dyn(brM = 0.2,    #moose birth rate
             brW = 0.001,  #wolf birth rate
             dfW = 0.5,    #wolf death fraction
             ipM = 500,     #initial moose population
-            ipW = 20     #initial wolf population 
-           ):   
+            ipW = 20,     #initial wolf population 
+            end_time = 50):   
     
     # Model parameters
     time_step = 0.0833    # simulation time step in years (a month)
     start_time = 0        # in years
-    end_time = 50         # in years
     
     # Derived constants
     N = int((end_time - start_time) / time_step)    # number of simulation steps
@@ -72,13 +71,14 @@ Function to run the population dynamics model.
 inputs : parameters for the model
 outputs: time series, Moose pop., Wolf pop. 
 '''
-def pop_dyn_mod(brM = 0.2,    #moose birth rate
+def pop_dyn_cap(brM = 0.2,    #moose birth rate
             dfM = 0.003,  #moose death fraction
             brW = 0.001,  #wolf birth rate
             dfW = 0.5,    #wolf death fraction
             ipM = 500,     #initial moose population
-            ipW = 20     #initial wolf population 
-           ):   
+            ipW = 20,     #initial wolf population 
+            end_time = 50,
+            cap = 500):   
     
     # Model parameters
     time_step = 0.0833    # simulation time step in years (a month)
@@ -103,7 +103,7 @@ def pop_dyn_mod(brM = 0.2,    #moose birth rate
     for i in range(N):
         
         t[i+1] = t[i] + time_step
-        M[i+1] = M[i] + (M[i]*brM - M[i]*dfM*W[i])*time_step
+        M[i+1] = M[i] + (M[i]*(1-M[i]/cap)*brM - M[i]*dfM*W[i])*time_step
         W[i+1] = W[i] + (W[i]*brW*M[i] - W[i]*dfW)*time_step
 
     return t,M,W
