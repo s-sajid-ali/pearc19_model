@@ -34,8 +34,8 @@ def pop_dyn(brM = 0.2,    #moose birth rate
             dfM = 0.003,  #moose death fraction
             brW = 0.001,  #wolf birth rate
             dfW = 0.5,    #wolf death fraction
-            ipM = 25,     #initial moose population
-            ipW = 800     #initial wolf population 
+            ipM = 500,     #initial moose population
+            ipW = 20     #initial wolf population 
            ):   
     
     # Model parameters
