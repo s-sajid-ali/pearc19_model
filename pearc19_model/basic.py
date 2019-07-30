@@ -62,6 +62,6 @@ def pop_dyn(brM = 0.2,    #moose birth rate
         
         t[i+1] = t[i] + time_step
         M[i+1] = M[i] + (M[i]*brM - M[i]*dfM*W[i])*time_step
-        W[i+1] = W[i] -(W[i]*brW*M[i] - W[i]*dfW)*time_step
+        W[i+1] = W[i] + (W[i]*brW*M[i] - W[i]*dfW)*time_step
 
     return t,M,W
