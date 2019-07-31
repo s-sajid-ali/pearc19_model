@@ -6,7 +6,7 @@
 \usepackage{comment}
 \usepackage{amsmath}
 \usepackage{caption}
-
+\usepackage{hyperref}
 
 \setbeamerfont{footnote}{size=\tiny}
 \setbeamerfont{footnote mark}{size=\tiny}
@@ -67,40 +67,97 @@
 % and table of contents.
 
 \section{Lokta-Voletra!}
+\begin{frame}{Predator-Prey ``Relationship" \footnote{www.alaskapublic.org,en.wikipedia.org}}
+\begin{block}{}
+	\begin{columns}[onlytextwidth,T]
+		\column{\dimexpr\linewidth-30mm-10mm}
+		\begin{itemize}
+		\begin{figure}
+			\vspace*{-1.1cm}\hspace*{-1.1cm}\includegraphics[width=50mm]{../plot_notebooks/moose_apr}
+		\end{figure}
+		\end{itemize}
+		\column{30mm}
+		\begin{figure}
+			\vspace*{1.1cm}\hspace*{-1.1cm}\includegraphics[width=50mm]{../plot_notebooks/wiki_wolf}
+		\end{figure}
+	\end{columns}
+\end{block}
+\end{frame}
+
 \begin{frame}{Predator-Prey Model}
-	\begin{block}{}
-		\begin{columns}[onlytextwidth,T]
-			\column{\dimexpr\linewidth-40mm-10mm}
-			\begin{itemize}
-			\item $\frac{dM}{dt}=$
-			\item $\frac{dW}{dt}=$
-			\end{itemize}
-			\column{40mm}
-			\begin{figure}
-				\hspace*{-1.1cm}\includegraphics[width=60mm]{../plot_notebooks/sanity}
-				\caption{Illustration of zone plate }
-			\end{figure}
-		\end{columns}
-	\end{block}
+	\item Coupled ODE's describing behavior of predator\& prey populations.
+	\item
+$\frac{dM}{dt}=br_{M}*M-df_{M}*M*W \ |\  \frac{dW}{dt}=br_{W}*W*M-df_{W}*W$	
+		\begin{figure}
+		\includegraphics[scale=0.35]{../plot_notebooks/short_and_long_runs}
+		\caption{Stability analysis}
+		\end{figure}
+\end{frame}
+
+\begin{frame}{Sensitivity to Moose Birth and Death rates}
+	\item `Amplitude' plots for Moose and Wolf populations.\footnote{Square root of quantities visualized for enhanced contrast}
+	\begin{figure}
+		\vspace*{-0.25cm}\hspace*{-1.1cm}\includegraphics[scale=0.35]{../plot_notebooks/sqrt_amp_vary_M}
+	\end{figure}
+\end{frame}
+
+\begin{frame}{Sensitivity to Moose Birth and Death rates}
+	\item `Period' plots for Moose and Wolf populations.\footnote{Square root of quantities visualized for enhanced contrast}
+	\begin{figure}
+		\vspace*{-0.25cm}\hspace*{-1.1cm}\includegraphics[scale=0.35]{../plot_notebooks/sqrt_per_vary_M}
+	\end{figure}
 \end{frame}
 
 
+\begin{frame}{Sensitivity to Wolf Birth and Death rates}
+	\item `Amplitude' plots for Moose and Wolf populations.\footnote{Square root of quantities visualized for enhanced contrast}
+	\begin{figure}
+		\vspace*{-0.25cm}\hspace*{-1.1cm}\includegraphics[scale=0.35]{../plot_notebooks/sqrt_amp_vary_W}
+	\end{figure}
+\end{frame}
 
+\begin{frame}{Sensitivity to Wolf Birth and Death rates}
+	\item `Period' plots for Moose and Wolf populations.\footnote{Square root of quantities visualized for enhanced contrast}
+	\begin{figure}
+		\vspace*{-0.25cm}\hspace*{-1.1cm}\includegraphics[scale=0.35]{../plot_notebooks/sqrt_per_vary_W}
+	\end{figure}\end{frame}
+
+
+\section{Real-World Factors}
+\begin{frame}{Model Carrying Capacity}
+	\begin{itemize}
+		\item What is carrying capacity ?
+		\item Which plot ?
+	\end{itemize}
+\end{frame}
+
+
+\begin{frame}{Explaining real world data}
+	\begin{itemize}
+		\item We can fit our model to real world data
+		\item Which plot ?
+	\end{itemize}
+\end{frame}
 
 \section{Implementation}
 \begin{frame}{Language \& Libraries!}
 	\begin{itemize}
-		\item some code was written.
+		\item Libraries : 
+		   \begin{itemize}
+			\item Numpy/Scipy : Arrays and Fit functions
+			\item Matplotlib : Visualization
+			\item Pandas  : Dataframes
+			\end{itemize}
+		\item How to HPC ?
+		   \begin{itemize}
+			\item Numexpr : Fast expression evaluation, to optimize code
+			\item Joblib : Parallel execution module
+			\item HDF5 : Structured I/O for scalable performance.
+			\item More science ! ?
+			\end{itemize}
 	\end{itemize}
 \end{frame}
 
-
-\section{Results}
-\begin{frame}{Results}
-	\begin{itemize}
-		\item Pretty plots!
-	\end{itemize}
-\end{frame}
 
 \section{Conclusion}
 \begin{frame}{Conclusion}
