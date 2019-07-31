@@ -16,33 +16,19 @@
 
 \title{Team 4 : Population Dynamics}
 
-\author{Sajid Ali\inst{1} \& Brady Butler\inst{2}}	
-\institute[NU] 
-{\inst{1}%
-	Applied Physics\\
-	Northwestern University\\
-	\inst{2}%	
+\author{Brady Butler\inst{1} \& Sajid Ali\inst{2}}	
+\institute 
+{\inst{1}	
 	Physics\\
-	University of Maine}
+	University of Maine\\
+	\inst{2}%
+	Applied Physics\\
+	Northwestern University}
 \date{\today}
-
-% - Either use conference name or its abbreviation.
-% - Not really informative to the audience, more for people (including
-%   yourself) who are reading the slides online
-
-%\subject{Theoretical Computer Science}
-% This is only inserted into the PDF information catalog. Can be left
-% out. 
-
-% If you have a file called "university-logo-filename.xxx", where xxx
-% is a graphic format that can be processed by latex or pdflatex,
-% resp., then you can add a logo as follows:
 
 \pgfdeclareimage[height=0.5cm]{university-logo}{pearc19}
 \logo{\pgfuseimage{university-logo}}
 
-% Delete this, if you do not want the table of contents to pop up at
-% the beginning of each subsection:
 \AtBeginSubsection[]
 {
   \begin{frame}<beamer>{Outline}
@@ -84,8 +70,9 @@
 \end{block}
 \end{frame}
 
+\section{Results}
 \begin{frame}{Predator-Prey Model}
-	\item Coupled ODE's describing behavior of predator\& prey populations.
+	\item Coupled ODE's describing behavior of predator \& prey populations.
 	\item
 $\frac{dM}{dt}=br_{M}*M-df_{M}*M*W \ |\  \frac{dW}{dt}=br_{W}*W*M-df_{W}*W$	
 		\begin{figure}
