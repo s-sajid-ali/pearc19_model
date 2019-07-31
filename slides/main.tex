@@ -107,22 +107,41 @@ $\frac{dM}{dt}=br_{M}*M-df_{M}*M*W \ |\  \frac{dW}{dt}=br_{W}*W*M-df_{W}*W$
 	\item `Period' plots for Moose and Wolf populations.\footnote{Square root of quantities visualized for enhanced contrast}
 	\begin{figure}
 		\vspace*{-0.25cm}\hspace*{-1.1cm}\includegraphics[scale=0.35]{../plot_notebooks/sqrt_per_vary_W}
-	\end{figure}\end{frame}
+	\end{figure}
+\end{frame}
 
 
 \section{Real-World Factors}
 \begin{frame}{Model Carrying Capacity}
 	\begin{itemize}
-		\item What is carrying capacity ?
-		\item Which plot ?
+		\item Restorative term that inhibits exponential growth
+	\item
+$\frac{dM}{dt}=br_{M}*M*(1-\dfrac{M}{M_{C}})-df_{M}*M*W  $
+	\end{itemize}
+	\begin{figure}
+	\includegraphics[scale=0.45]{../plot_notebooks/long_run_cap}
+	\end{figure}
+
+\end{frame}
+
+\section{Explaining real world data}
+\begin{frame}{Explaining real world data I}
+	\begin{itemize}
+		\item Fitting our model to real world data
+		\item Carrying capacity model
+		\begin{figure}
+		\hspace*{-1.2cm}\includegraphics[scale=0.4]{../plot_notebooks/est_cap}
+		\end{figure}
 	\end{itemize}
 \end{frame}
 
-
-\begin{frame}{Explaining real world data}
+\begin{frame}{Explaining real world data II}
 	\begin{itemize}
-		\item We can fit our model to real world data
-		\item Which plot ?
+		\item Carrying capacity model with inbreeding correction
+		\item $df_{W}$ becomes linearly dependent on time.
+		\begin{figure}
+			\hspace*{-1.2cm}\includegraphics[scale=0.4]{../plot_notebooks/est_cap_sick}
+		\end{figure}
 	\end{itemize}
 \end{frame}
 
@@ -140,7 +159,7 @@ $\frac{dM}{dt}=br_{M}*M-df_{M}*M*W \ |\  \frac{dW}{dt}=br_{W}*W*M-df_{W}*W$
 			\item Numexpr : Fast expression evaluation, to optimize code
 			\item Joblib : Parallel execution module
 			\item HDF5 : Structured I/O for scalable performance.
-			\item More science ! ?
+			\item More science! ?
 			\end{itemize}
 	\end{itemize}
 \end{frame}
@@ -149,7 +168,12 @@ $\frac{dM}{dt}=br_{M}*M-df_{M}*M*W \ |\  \frac{dW}{dt}=br_{W}*W*M-df_{W}*W$
 \section{Conclusion}
 \begin{frame}{Conclusion}
 	\begin{itemize}
-		\item And thus an important project was undertaken.
+		\item Model could be improved by: 
+		\begin{itemize}
+			\item Winter shock to moose population
+			\item Parvovirus shock to wolf population
+			\item Weather/tick effect on moose population
+		\end{itemize}
 		\item Thank you to the organizers of PEARC19! 
 	\end{itemize}
 \end{frame}
