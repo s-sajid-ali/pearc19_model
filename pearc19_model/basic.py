@@ -30,17 +30,19 @@ Function to run the population dynamics model.
 inputs : parameters for the model
 outputs: time series, Moose pop., Wolf pop. 
 '''
-def pop_dyn(brM = 0.2,    #moose birth rate
-            dfM = 0.003,  #moose death fraction
-            brW = 0.001,  #wolf birth rate
-            dfW = 0.5,    #wolf death fraction
-            ipM = 500,     #initial moose population
-            ipW = 20,     #initial wolf population 
-            end_time = 50):   
+def pop_dyn(beta):   
+    
+    brM = beta[0]    #moose birth rate
+    dfM = beta[1]  #moose death fraction
+    brW = beta[2]  #wolf birth rate
+    dfW = beta[3]    #wolf death fraction
+    ipM = 538.151087      #initial moose population
+    ipW = 20              #initial wolf population 
     
     # Model parameters
     time_step = 0.0833    # simulation time step in years (a month)
     start_time = 0        # in years
+    end_time = 60
     
     # Derived constants
     N = int((end_time - start_time) / time_step)    # number of simulation steps
@@ -63,7 +65,7 @@ def pop_dyn(brM = 0.2,    #moose birth rate
         M[i+1] = M[i] + (M[i]*brM - M[i]*dfM*W[i])*time_step
         W[i+1] = W[i] + (W[i]*brW*M[i] - W[i]*dfW)*time_step
 
-    return t,M,W
+    return t[::12],M[::12],W[::12]
 
 
 '''
