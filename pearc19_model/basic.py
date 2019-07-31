@@ -22,7 +22,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-all = ['pop_dyn', 'pop_dyn_cap']
+all = ['pop_dyn', 'pop_dyn_cap', 'pop_dyn_cap_sick']
 
 
 '''
@@ -79,10 +79,11 @@ def pop_dyn_cap(beta):
     dfW = beta[3]    #wolf death fraction
     r = beta[4]
     
+    
     # Model parameters
     time_step = 0.0833    # simulation time step in years (a month)
     start_time = 0        # in years
-    end_time = 61
+    end_time = 60
     
     # Initial conditions
     ipM = 538.151087      #initial moose population
@@ -110,7 +111,7 @@ def pop_dyn_cap(beta):
         M[i+1] = M[i] + (M[i]*brM - r*M[i]**2 - dfM*M[i]*W[i])*time_step
         W[i+1] = W[i] + (W[i]*brW*M[i] - W[i]*dfW)*time_step
 
-    return t,M,W
+    return t[::12],M[::12],W[::12]
 
 
 
@@ -119,18 +120,23 @@ Function to run the population dynamics model.
 inputs : parameters for the model
 outputs: time series, Moose pop., Wolf pop. 
 '''
-def pop_dyn_full(brM = 0.2,    #moose birth rate
-            dfM = 0.003,  #moose death fraction
-            brW = 0.001,  #wolf birth rate
-            dfW = 0.5,    #wolf death fraction
-            ipM = 500,     #initial moose population
-            ipW = 20,     #initial wolf population 
-            end_time = 50,
-            cap = 500):   
+def pop_dyn_cap_sick(beta):   
+    
+    brM = beta[0]    #moose birth rate
+    dfM = beta[1]  #moose death fraction
+    brW = beta[2]  #wolf birth rate
+    dfW1 = beta[3]    #wolf death fraction 1
+    r = beta[4]
+    dfW_slope = beta[5]  # wolf death fraction 2 during parvo
     
     # Model parameters
     time_step = 0.0833    # simulation time step in years (a month)
     start_time = 0        # in years
+    end_time = 60
+    
+    # Initial conditions
+    ipM = 538.151087      #initial moose population
+    ipW = 20              #initial wolf population 
     
     # Derived constants
     N = int((end_time - start_time) / time_step)    # number of simulation steps
@@ -148,9 +154,9 @@ def pop_dyn_full(brM = 0.2,    #moose birth rate
     # for a given simulation step
 
     for i in range(N):
-        
-        t[i+1] = t[i] + time_step
-        M[i+1] = M[i] + (M[i]*(1-M[i]/cap)*brM - M[i]*dfM*W[i])*time_step
-        W[i+1] = W[i] + (W[i]*brW*M[i] - W[i]*dfW)*time_step
 
-    return t,M,W
+        t[i+1] = t[i] + time_step
+        M[i+1] = M[i] + (M[i]*brM - r*M[i]**2 - dfM*M[i]*W[i])*time_step
+        W[i+1] = W[i] + (W[i]*brW*M[i] - W[i]*(dfW1 + dfW_slope*(i%480) ) )*time_step
+
+    return t[::12],M[::12],W[::12]
